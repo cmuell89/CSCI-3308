@@ -1,0 +1,8 @@
+Satish Upadhyaya 
+Matthew Strong
+
+Q: What are the things needed for Bootstrap to be loaded?
+A:
+
+Q: How does Bootstrap's Grid system work? 
+A: 
