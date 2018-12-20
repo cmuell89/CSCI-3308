@@ -1,0 +1,57 @@
+Matthew Strong, Satish Upadhyaya
+CSCI 3308 Section 205
+September 7th, 2018
+
+1. mkdir cs3308
+
+2. mv cs3308 CSCI3308_205
+
+3. unzip 'Lab Materials.zip'
+
+4. ls 'Lab Materials' and du 'Lab Materials' to display the hidden materials
+
+5. ls -lS the biggest fightingRalphie.png in the images directory.
+
+6. commands: cp majesticRalphie.png ../tiny Data and cp aliceinwonderland.txt ../tinyData, the size of the directory
+tinyData is 278437 bytes.
+
+
+7. zip -r tinyData.zip tinyData, the size of the file is 172091 bytes here
+
+8. tar -cvf tinyData.tar tinyData, the size of the tar file is 286720 bytes here
+
+9. rm -rf tinyData tinyData.zip
+
+10. tar -xvf tinyData.tar , x is to extract tar ball, v is verbose output to show progress, f, specifies the name of an archive file
+
+11. when we unzip little1, we get a txt file and a jpg file (in our current directory), but when we unzip little2, a directory called 'little' is created in the current directory, and the 'little' directory contains the same jpg and txt files.
+ 
+12. find / -name target.txt
+
+path in directory: /emptyFolders/13/target.txt
+
+full path: /home/satish/Documents/CSCI3308_205/Lab Materials/emptyFolders/13/target.txt
+
+13. head -5 dracula.txt >> myShortStory.txt and tail -5 aliceinwonderland.txt >> myShortStory.txt
+also had to do touch myShortStory.txt
+
+
+Step 5:
+
+1. sort password_demo.txt     gives sorted based on first field
+
+2. sort -t ':' -k4,4 -n password_demo.txt
+
+3. grep system password_demo.txt
+
+4. wc -w password_demo.txt
+
+5. sort -u -t':' -k3,3 password_demo.txt - sorts by the third field
+
+6. sort -u -t':' -k3,3 password_demo.txt > tmp.txt
+
+7. I started with chmod 777 getUniqueGID.sh
+
+ran the shell script with ./getUniqueGID.sh
+
+

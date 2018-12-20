@@ -1,0 +1,76 @@
+<!-- Satish Upadhyaya -->
+<!-- Matthew Strong -->
+<!-- Section 205, Lab 7, Ajay Kedia -->
+
+<html>
+<head>
+	<title>Hello</title>
+	<script src="http://code.jquery.com/jquery-2.2.0.js"></script>
+	<script>
+		$(document).ready(function() {
+		var url =
+		'https://api.forecast.io/forecast/a0e9b944cb4e28bf6bcd9155d5fd08c4/40.014984,-105.270546'
+		$.ajax({url:url, dataType:"jsonp"}).then(function(data) {
+		
+		var table = document.getElementById("ta");
+		console.log(data);
+		var reference = {
+			"temperature": "Temperature",
+			"apparentTemperature": "Apparent Temperature",
+			"precipIntensity": "Precipitation Intensity",
+			"precipProbability": "Precipitation Probability"
+		}
+		var i = 1;
+		for (var key in data.currently){
+			if(key == "apparentTemperature" || key == "temperature"  || key == "precipIntensity" || key == "precipProbability")
+			{
+				console.log(key, data.currently[key]);
+				var row = table.insertRow(1);
+				var cell1 = row.insertCell(0);
+				var cell2 = row.insertCell(1);
+				cell1.innerHTML = reference[key];
+				cell2.innerHTML = data.currently[key];
+				i = i+1;
+				if(key == "precipProbability")
+				{
+					if(data.currently[key] == 0)
+					{
+						row = table.insertRow(i);
+						cell1 = row.insertCell(0);
+						cell2 = row.insertCell(1);
+						cell2.innerHTML = "There is No Precipitation";
+					}
+					else
+					{
+						//there is a precipitation type
+						cell2.innerHTML = data.currently["precipType"];
+					}
+					cell1.innerHTML = "Precipitation Type";
+					i = i+1;
+				}
+			}
+		}
+		
+		})
+		})
+	</script>
+	<style>
+		table {
+			border-collapse: collapse;
+		}
+
+		table, td, th {
+			border: 1px solid black;
+		}
+	</style>
+</head>
+<body>
+	<p>Hello, World.</p>
+	<table id = "ta">
+		<tr>
+			<th>Stat</th>
+			<th>Value</th>
+		</tr>
+	</table>
+</body>
+</html>

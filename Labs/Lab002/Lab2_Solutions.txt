@@ -1,0 +1,64 @@
+Matthew Strong
+Satish Upadhyaya
+
+Lab 2 Solutions.txt
+
+1.
+
+a). diff scene1_v1.txt scene1_v2.txt
+
+b). For the original diff output the '>' character indicate the lines in the second file, and the '<' character
+indicates the lines in the first file, such that there are differences in those lines
+
+c). The -c added to the previous commands allows us to see the differences in the 'context' 
+of where the differences are in the text, the '!' character indicates that the line is part of
+a group of one or more lines that must change. The '+' character indicates the line 
+in the second file that should be added, and '-' character indicates a line in the
+first file that should be deleted.
+
+2.
+
+a). grep -n 'pigeon' scene1_v1.txt
+
+b). diff scene1_v1.txt scene1_v2.txt | grep '[<]'
+
+3.
+
+a). cut -s -d ':' -f 1 scene1_v1.txt
+
+b). diff scene1_v1.txt scene1_v2.txt | grep '[<]' | cut -s -d ':' -f 1
+
+4.
+
+a). sort scene1_v1.txt | uniq -d 
+
+b). diff scene1_v1.txt scene1_v2.txt | grep '[<]' | cut -s -d ':' -f 1 | sort | uniq -c
+
+
+5.
+
+a1). sed 's/[a-zA-Z]//g' cryptic.txt
+
+a2). sed 's/[0-9]/_/g' cryptic.txt
+
+b). sed 's/4/a/g' cryptic.txt | sed 's/3/e/g' | sed 's/5/s/g' | sed 's/1/i/g' | sed 's/7/t/g
+ | sed 's/0/o/g'
+	To do this without pipe, we can simply do sed -e 's/4/a/g' -e 's/3/e/g' -e 's/5/s/g' -e 's/1/i/g'
+	-e 's/7/t/g' -e 's/0/o/g' cryptic.txt	 
+
+6.
+
+a). grep -c '^[0-9]\{3\}-' regex_practice_data.txt
+	note - There was some case where we had xxx-xxx-xxxx/some-numbers-here, so to get rid of that, we can do
+	grep -c '^[0-9]\{3\}-[0-9]\{3\}-[0-9]\{4\}$' regex_practice_data.txt
+
+b). grep -c '^303-441-[0-9]\{4\}$' regex_practice_data.txt
+
+7.
+
+a). awk '{ x=$6; y=$2 } {if (NR>1) print x/y }' pizzOrders.txt
+
+b). awk '{ amt+=$2; cheese+=$5 }END{print (c/amt)*100, "percent of all pizzas sold where cheese."}' pizzaOrders.txt
+
+
+
